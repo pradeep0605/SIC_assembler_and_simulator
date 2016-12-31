@@ -1,0 +1,1 @@
+add addr and clear comp compr div divr jeq jgt jlt jsub lda ldch lds ldb ldt sta sts stt stb stch ldx stx mul mulr or rd rmo rsub ldl stl sub subr td tio tix tixr wd read disp start end resw resb word byte strd j reads 

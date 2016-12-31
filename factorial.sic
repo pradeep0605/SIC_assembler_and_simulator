@@ -1,0 +1,27 @@
+;THIS PROGRAM IS TO FIND THE FACTORIAL OF A GIVEN NUMBER
+
+factorial  start 
+        strd msg1
+        read 
+        sta fact
+        ldt fact
+        ldb one
+  up    mulr t,b
+        lda one
+        subr t,a
+        rmo a,t
+        comp one
+        jgt up
+        stb result
+        lda result
+        strd msg2
+        disp
+        strd newline	
+
+      	fact resw 1
+      	result resw 1
+      	msg1 byte "Enter_the_number:"
+      	msg2 byte "\nThe_factorial_of_the_given_number_is:_"
+        one  word 1
+        newline byte "\n"
+end fact

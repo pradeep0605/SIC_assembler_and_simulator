@@ -1,0 +1,49 @@
+;THIS IS A PROGRAM TO READ "N" ELEMENTS TO THE ARRAY AND CALCULATE THE SUM OF THE ARRAY
+sum start 0
+   strd msg
+   read
+   sta n
+   strd	 msg2		; THIS PART OF THE CODE READ THE NUMBER OF ELEMENTS TO BE READ  INTO THE ARRAY		
+   disp
+   strd msg3
+   ldt incr 
+   mulr t,a
+   sta max
+
+up1 read
+   sta arr,x
+   addr t,x
+   rmo x,a           ; READ N ELEMENTS
+   comp max
+   jlt up1
+   clear a
+   clear x
+   clear b
+   
+up2 lda arr,x
+    ;disp
+    ;strd newline
+    addr a,b       ; CALCULATE THE SUM
+    addr t,x
+    rmo x,a
+    comp max
+    jlt up2
+    stb result
+    rmo b,a
+    strd msg4
+    disp
+    strd newline
+      
+   ;memory related info   
+   msg byte "Enter_the_elements_limit:_"
+   msg2 byte "Enter_the_"
+   msg3 byte "_elements:\n"
+   incr word 3
+   msg4 byte "\nThe_sum_of_array_is:_"
+   arr resw 100
+   max resw 1
+   n   resw 1
+   result resw 1
+   newline byte "\n"
+ end
+

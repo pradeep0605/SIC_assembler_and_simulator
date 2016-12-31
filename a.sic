@@ -1,0 +1,14 @@
+temp start 
+
+ up   strd msg
+    strd newline 
+    jlt up
+        
+    msg byte "Enter_the_string:_"
+    msg2 byte "\nThe_length_of_the_String_is:_"
+    newline byte "\n"
+    str resb 100
+    max word 100  
+    two word 2
+    null byte 0
+end

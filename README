@@ -1,0 +1,94 @@
+To compile the assembler and simulator, you need g++.
+
+To compile,
+> make
+
+To run,
+> ./sicasm filename.sic
+This would create a object file name filename.sic.pkrobj
+> ./sicsim filename.sic.pkrobj
+This would run the program.
+
+====================================================
+Below are some of the details of the project and some
+rules to be followed while using the system; due to
+implementation limitation
+===================================================
+
+
+*) immediate addresssing is not supported.
+
+*) Literals are also not supported.
+
+*) No support for macros.
+
+
+
+1. This assembler still has many undiscovered error (may fail in detecting some errors in the program or while creating object file(rare while creating obj file)  ). Many of the basic errors will be detected.
+
+2. All the instruction and variables are case 'insensitve' (except The messages in within "" of a program)
+
+3. instead of a space, an underscore '_' has to be used while creating a strings within doulbe quotes .
+   for usage of _ , newline , tabspace, backspace, double quotes we can use escape characters similarly to C / C++ strings.
+   
+    e.g.   message byte  "This_is_\"message\"_to\n_show_\__how_a_\b\__string_should_be_displayed_"
+
+4. variables name can be a predefined register name, It depends on the context in which we use the registers and variables.
+
+5. register s,b,t,l are provided even if it is not in sic and they are used as general purpose registers here (and some are used for specific  
+   purpose) . 
+   where 's'  is default register for reading and displaying options
+   'l' register is used to store the remainder of division
+
+6. Three special instructions are provided for reading and displaying. (not in sic Included BY ME (PRADEEP KASHYAP)).
+   'disp' will just display the contents of the register 'a' according to the value in the register 's'
+
+     DISP
+     s=0  means treat the content of the register 'a' as integer word and display.
+     s=1  means treat the content of the register 'a' as integer byte and display.
+     s=2  means treat the content of the register 'a' as character and display.
+
+     READ
+     s=0 means read an integer word of information from the console and store it in register 'a'
+     s=1 means read an integer byte (character) of information from the console and store it in register 'a'
+
+     READS
+     reads a string until newline, to the specified memory location. Even indexing can also be used. I.e. we can specify from where we
+     want to start storing the characters.... eg.  reads string,x (starts storing the read string from X th position onwards in the 'string'.)
+     
+     STRD (string display)
+     displays a string specified in the instruction. Even indexing can also used. I.e. we can specify from where 
+     we want to start displaying the string ... eg... strd message,x (starts displaying message from X th character onwards)
+
+
+7. Index addresssing is supported.
+
+8. No concept of relocation and other things. ALmost every dynamic decision are taken by the interpreter and hence; no worries  :)
+
+9. Object code generated is a direct one without headers and other stuff. first four bytes indicate the address of last executeable instruction
+   and remaining else is pure object code. (hence less space consumed).
+
+10. Even word and resw both are variables here. The only difference is that in words we can give initial values.
+    This reduces the number of variables required. If we want to keep a word as a constant then its the programmer's responsibility.
+
+11. Invalid memory access is denied and if done, as usual "Segmentation fault" occurs.. :)
+
+12. After a label, it should be followed by an instruction  !! (assebler fault) i.e we cannot write instruction in next line of the label.
+    other wise it will give an error!!
+     
+     e.g. 
+        1.   label  add  arr,x   (correct)
+     
+        2.   label
+                    add  arr,x   (error!)
+
+
+
+
+
+
+
+
+
+
+     
