@@ -11,12 +11,22 @@ This would run the program.
 
 You can refer to example programs like
 strlen.sic, sum10.c
+
 ====================================================
 Below are some of the details of the project and some
 rules to be followed while using the system; due to
 implementation limitation
 ===================================================
 
+The main goal of the project was to run some of the programs that can be written
+in SIC and see the objdump of it. The assembler by default dumps those
+information when a program is compiled.
+
+
+*) This assembler is kind of custom made; i.e. includes instructions that are
+not defined as part of SIC (like instruction to read and write to console). But
+most of the intruction are exactly like how they are define in SIC. This also
+means that the obj file created would not be exactly like how described in SIC.
 
 *) immediate addresssing is not supported.
 
