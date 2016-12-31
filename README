@@ -9,6 +9,8 @@ This would create a object file name filename.sic.pkrobj
 > ./sicsim filename.sic.pkrobj
 This would run the program.
 
+You can refer to example programs like
+strlen.sic, sum10.c
 ====================================================
 Below are some of the details of the project and some
 rules to be followed while using the system; due to
